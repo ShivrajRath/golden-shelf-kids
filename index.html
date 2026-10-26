@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Shelf Kids | Age-Appropriate Books for Children & Teens</title>
+  <meta name="description" content="Golden Shelf Kids is a curated library of 2,500+ age-appropriate books for kids (0-3, 3-5, 5-8, 8-12) and teens. Rated 4.0+ on Goodreads with 500+ ratings. Fiction and non-fiction, by age and category.">
+  <meta name="keywords" content="kids books, children's books, books for kids, age appropriate books, picture books, middle grade, young adult, teen books, fiction, nonfiction">
+  <meta name="author" content="Golden Shelf Kids">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://novicelab.org/golden-shelf-kids/">
+  <meta name="theme-color" content="#ec4899">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Golden Shelf Kids">
+  <meta property="og:title" content="Golden Shelf Kids | Books for Every Age">
+  <meta property="og:description" content="A curated library of 2,500+ age-appropriate books for kids and teens, rated 4.0+ on Goodreads.">
+  <meta property="og:url" content="https://novicelab.org/golden-shelf-kids/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Golden Shelf Kids | Books for Every Age">
+  <meta name="twitter:description" content="Curated kids & teen books rated 4.0+ on Goodreads — by age and category.">
+
+  <style>
+    html { background: #fdfbf7; }
+    html:not(.tw-ready) body { visibility: hidden; }
+    html.tw-ready body { visibility: visible; }
+    #fouc-loader { visibility: visible; position: fixed; inset: 0; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: #fdfbf7; }
+    #fouc-loader .fouc-spinner { width: 40px; height: 40px; border-radius: 9999px; border: 4px solid #fbcfe8; border-top-color: #ec4899; animation: fouc-spin 0.8s linear infinite; }
+    #fouc-loader p { margin: 0; font-family: Inter, system-ui, sans-serif; font-size: 14px; color: #57534e; }
+    @keyframes fouc-spin { to { transform: rotate(360deg); } }
+    html.tw-ready #fouc-loader { display: none; }
+  </style>
+  <noscript><style>html:not(.tw-ready) body { visibility: visible; } #fouc-loader { display: none; }</style></noscript>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    (function () {
+      var done = false;
+      function ready() { if (done) return; done = true; document.documentElement.classList.add('tw-ready'); }
+      setTimeout(ready, 2500);
+      window.addEventListener('load', function () { setTimeout(ready, 0); });
+      try {
+        var obs = new MutationObserver(function (muts) {
+          for (var i = 0; i < muts.length; i++) {
+            var nodes = muts[i].addedNodes || [];
+            for (var j = 0; j < nodes.length; j++) {
+              var n = nodes[j];
+              if (n && n.tagName === 'STYLE' && (n.textContent || '').indexOf('--tw-') !== -1) { ready(); obs.disconnect(); return; }
+            }
+          }
+        });
+        obs.observe(document.head, { childList: true });
+        var styles = document.head.querySelectorAll('style');
+        for (var k = 0; k < styles.length; k++) { if ((styles[k].textContent || '').indexOf('--tw-') !== -1) { ready(); obs.disconnect(); break; } }
+      } catch (e) {}
+    })();
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.17.4/dist/cdn.min.js" integrity="sha384-5/joNqFnRyVWzXp99bHot6RHG+EksGp+USSgZwPar7T9SD9PKKER37n/8bXBAZGd" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    [x-cloak] { display: none !important; }
+    body { font-family: 'Nunito', system-ui, sans-serif; }
+    .font-display { font-family: 'Fredoka', 'Nunito', sans-serif; }
+    ::selection { background: #fbcfe8; color: #831843; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-full flex flex-col antialiased" x-data="bookShelf()" :class="theme.pageBg">
+  <div id="fouc-loader" aria-hidden="true"><div class="fouc-spinner"></div><p>Loading Golden Shelf Kids…</p></div>
+
+  <div class="h-1" :class="theme.bar" aria-hidden="true"></div>
+
+  <header class="bg-white/90 backdrop-blur border-b sticky top-0 z-30 shadow-sm" :class="theme.border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div class="flex items-center space-x-3 min-w-0">
+        <div class="text-white p-2 rounded-xl shadow-sm flex-shrink-0" :class="theme.accentBg" aria-hidden="true">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <div class="min-w-0">
+          <h1 class="text-lg font-bold font-display tracking-tight truncate" :class="theme.accentText">Golden Shelf Kids</h1>
+          <p class="text-xs text-stone-500 truncate">Books kids love, by age</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-stone-600 flex-shrink-0" aria-label="Primary">
+        <a href="#collection" class="hover:underline" :class="theme.accentText">Collection</a>
+      </nav>
+      <div class="flex items-center space-x-2 flex-shrink-0">
+        <span class="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border" :class="theme.chip">
+          <span class="w-2 h-2 mr-1.5 rounded-full" :class="theme.dot"></span>
+          <span x-text="ageLabel(ageGroup)"></span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8">
+
+    <!-- Hero -->
+    <section class="text-center space-y-3 py-4">
+      <h2 class="text-3xl sm:text-5xl font-display font-bold tracking-tight" :class="theme.accentText" x-text="heroTitle()"></h2>
+      <p class="text-stone-600 leading-relaxed max-w-2xl mx-auto" x-text="heroSub()"></p>
+    </section>
+
+    <!-- Age selector -->
+    <section aria-label="Choose age group" class="flex flex-wrap justify-center gap-2 sm:gap-3">
+      <template x-for="ag in ageGroups" :key="ag.id">
+        <button @click="setAge(ag.id)"
+          :class="ageGroup === ag.id ? (theme.accentBg + ' text-white shadow-lg scale-105') : 'bg-white text-stone-700 hover:shadow-md border border-stone-200'"
+          class="px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl text-sm sm:text-base font-bold transition-all flex items-center gap-2">
+          <span x-text="ag.emoji"></span>
+          <span x-text="ag.label"></span>
+        </button>
+      </template>
+    </section>
+
+    <!-- Loading -->
+    <div x-show="loading" x-cloak class="text-center py-20">
+      <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-t-transparent" :class="theme.spinner"></div>
+      <p class="mt-4 text-stone-600 font-medium">Loading books…</p>
+    </div>
+
+    <div x-show="!loading && loadError" x-cloak class="text-center py-20 bg-white rounded-3xl border shadow-sm" :class="theme.border">
+      <p class="text-stone-900 font-semibold">Couldn't load the collection.</p>
+      <p class="mt-1 text-sm text-stone-500">Check your connection and reload.</p>
+      <button @click="init()" class="mt-4 px-4 py-2 text-white text-sm font-medium rounded-xl transition-colors" :class="theme.accentBg">Retry</button>
+    </div>
+
+    <template x-if="!loading && !loadError">
+      <div class="space-y-6 sm:space-y-8">
+
+        <!-- Filters -->
+        <section id="collection" class="bg-white rounded-3xl border shadow-sm p-4 sm:p-6 space-y-4" :class="theme.border">
+          <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+            <input type="text" x-model.debounce.300ms="searchQuery" placeholder="Search by title, author, category…" aria-label="Search books"
+              class="flex-1 px-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 shadow-sm">
+            <select x-model="typeFilter" aria-label="Filter by type" class="px-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-sm font-medium cursor-pointer">
+              <option value="all">All types</option>
+              <option value="fiction">Fiction</option>
+              <option value="nonfiction">Non-fiction</option>
+            </select>
+            <select x-model="sortBy" aria-label="Sort books" class="px-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-sm font-medium cursor-pointer">
+              <option value="curated">Sort: Default</option>
+              <option value="rating_desc">Sort: Highest rated</option>
+              <option value="ratings_count_desc">Sort: Most reviewed</option>
+              <option value="title_asc">Sort: Title A-Z</option>
+            </select>
+          </div>
+
+          <!-- Category pills -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <p class="text-xs font-semibold text-stone-500 uppercase tracking-wider">Categories</p>
+              <button @click="clearCategories()" x-show="selectedCategories.length > 0" class="text-xs font-medium hover:underline" :class="theme.accentText">Clear</button>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button @click="toggleCategory('')" 
+                :class="selectedCategories.length === 0 ? (theme.accentBg + ' text-white') : 'bg-stone-100 text-stone-600 hover:bg-stone-200'"
+                class="px-3 py-1.5 rounded-full text-xs font-bold transition-colors">All</button>
+              <template x-for="cat in visibleCategories" :key="cat">
+                <button @click="toggleCategory(cat)"
+                  :class="selectedCategories.includes(cat) ? (theme.accentBg + ' text-white') : 'bg-stone-100 text-stone-600 hover:bg-stone-200'"
+                  class="px-3 py-1.5 rounded-full text-xs font-bold transition-colors" x-text="cat"></button>
+              </template>
+            </div>
+          </div>
+
+          <p class="text-sm text-stone-500"><span x-text="filteredBooks.length"></span> books for ages <span x-text="ageLabel(ageGroup)"></span></p>
+        </section>
+
+        <!-- Books grid -->
+        <section aria-label="Book collection" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <template x-for="book in displayedBooks" :key="book.slug || book.title">
+            <article class="bg-white rounded-2xl border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group" :class="theme.border">
+              <a :href="bookPageUrl(book)" class="flex flex-col flex-grow">
+                <div class="aspect-[3/4] overflow-hidden bg-stone-100">
+                  <img :src="coverUrl(book)" :alt="'Cover of ' + (book.title || 'book')" loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    @error="handleCoverError($event, book)" @load="checkCover($event, book)">
+                </div>
+                <div class="p-4 flex flex-col flex-grow space-y-2">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-bold" :class="theme.accentText" x-text="book.publication_year"></span>
+                    <span class="text-stone-500 font-medium">⭐ <span x-text="book.goodreads?.rating ?? '—'"></span></span>
+                  </div>
+                  <h3 class="font-display font-bold text-stone-900 text-base leading-snug line-clamp-2 group-hover:opacity-80" :class="theme.accentText" x-text="book.title"></h3>
+                  <p class="text-xs text-stone-600 truncate">by <span x-text="book.author"></span></p>
+                  <p class="text-xs text-stone-500 line-clamp-2" x-text="book.one_sentence_hook"></p>
+                  <div class="flex flex-wrap gap-1 pt-1">
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full" :class="book.fiction ? 'bg-sky-100 text-sky-700' : 'bg-emerald-100 text-emerald-700'" x-text="book.fiction ? 'Fiction' : 'Non-fiction'"></span>
+                    <template x-for="g in (book.genres_tags || []).slice(0,1)">
+                      <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-stone-100 text-stone-600" x-text="g"></span>
+                    </template>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </template>
+        </section>
+
+        <!-- Pagination -->
+        <div class="flex flex-col items-center gap-2 pt-2" x-show="filteredBooks.length > 0">
+          <p class="text-xs text-stone-500">Showing <span class="font-semibold text-stone-800" x-text="displayedBooks.length"></span> of <span class="font-semibold text-stone-800" x-text="filteredBooks.length"></span> books</p>
+          <button x-show="hasMore" @click="loadMore()" class="px-5 py-2.5 bg-white border border-stone-200 hover:shadow-md text-stone-700 text-sm font-bold rounded-xl shadow-sm transition-colors" x-text="'Load more (' + (filteredBooks.length - displayedBooks.length) + ' remaining)'"></button>
+        </div>
+
+        <div x-show="filteredBooks.length === 0" class="text-center py-12 bg-white rounded-2xl border shadow-sm" :class="theme.border">
+          <p class="text-stone-900 font-semibold">No books match your filters.</p>
+          <p class="mt-1 text-sm text-stone-500">Try a different search or category.</p>
+          <button @click="resetFilters()" class="mt-4 px-4 py-2 text-white text-sm font-bold rounded-xl transition-colors" :class="theme.accentBg">Clear filters</button>
+        </div>
+
+      </div>
+    </template>
+
+  </main>
+
+  <footer class="bg-white border-t mt-12 py-8" :class="theme.border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs text-stone-500">Golden Shelf Kids • Shivraj Rath</p>
+    </div>
+  </footer>
+
+  <script>
+    function bookShelf() {
+      return {
+        allBooks: [],
+        loading: true,
+        loadError: false,
+        ageGroup: '0-3',
+        searchQuery: '',
+        selectedCategories: [],
+        typeFilter: 'all',
+        sortBy: 'curated',
+        showAllCategories: false,
+        pageSize: 24,
+        visibleCount: 24,
+
+        ageGroups: [
+          { id: '0-3', label: 'Ages 0-3', emoji: '🍼' },
+          { id: '3-5', label: 'Ages 3-5', emoji: '🎨' },
+          { id: '5-8', label: 'Ages 5-8', emoji: '🚀' },
+          { id: '8-12', label: 'Ages 8-12', emoji: '🧭' },
+          { id: 'teen', label: 'Teens', emoji: '🎧' },
+        ],
+
+        themes: {
+          '0-3': { pageBg: 'bg-pink-50', bar: 'bg-gradient-to-r from-pink-300 via-rose-300 to-yellow-200', accentBg: 'bg-pink-500', accentHover: 'hover:bg-pink-600', accentText: 'text-pink-600', border: 'border-pink-200', chip: 'bg-pink-100 text-pink-800 border-pink-200', dot: 'bg-pink-500', spinner: 'border-pink-500', hero: 'from-pink-500 to-rose-500' },
+          '3-5': { pageBg: 'bg-sky-50', bar: 'bg-gradient-to-r from-sky-300 via-blue-400 to-indigo-300', accentBg: 'bg-sky-500', accentHover: 'hover:bg-sky-600', accentText: 'text-sky-600', border: 'border-sky-200', chip: 'bg-sky-100 text-sky-800 border-sky-200', dot: 'bg-sky-500', spinner: 'border-sky-500', hero: 'from-sky-500 to-blue-500' },
+          '5-8': { pageBg: 'bg-emerald-50', bar: 'bg-gradient-to-r from-emerald-300 via-green-400 to-teal-300', accentBg: 'bg-emerald-500', accentHover: 'hover:bg-emerald-600', accentText: 'text-emerald-600', border: 'border-emerald-200', chip: 'bg-emerald-100 text-emerald-800 border-emerald-200', dot: 'bg-emerald-500', spinner: 'border-emerald-500', hero: 'from-emerald-500 to-teal-500' },
+          '8-12': { pageBg: 'bg-teal-50', bar: 'bg-gradient-to-r from-teal-300 via-cyan-400 to-blue-300', accentBg: 'bg-teal-500', accentHover: 'hover:bg-teal-600', accentText: 'text-teal-600', border: 'border-teal-200', chip: 'bg-teal-100 text-teal-800 border-teal-200', dot: 'bg-teal-500', spinner: 'border-teal-500', hero: 'from-teal-500 to-cyan-500' },
+          'teen': { pageBg: 'bg-violet-50', bar: 'bg-gradient-to-r from-violet-300 via-purple-400 to-fuchsia-300', accentBg: 'bg-violet-500', accentHover: 'hover:bg-violet-600', accentText: 'text-violet-600', border: 'border-violet-200', chip: 'bg-violet-100 text-violet-800 border-violet-200', dot: 'bg-violet-500', spinner: 'border-violet-500', hero: 'from-violet-500 to-fuchsia-500' },
+        },
+
+        get theme() { return this.themes[this.ageGroup] || this.themes['0-3']; },
+
+        ageLabel(ag) {
+          const m = { '0-3':'0-3 yrs', '3-5':'3-5 yrs', '5-8':'5-8 yrs', '8-12':'8-12 yrs', 'teen':'Teens' };
+          return m[ag] || ag;
+        },
+
+        heroTitle() {
+          const m = {
+            '0-3': 'Tiny hands, big stories 🍼',
+            '3-5': 'Play, imagine, read 🎨',
+            '5-8': 'Adventure awaits 🚀',
+            '8-12': 'Discover your next favorite 🧭',
+            'teen': 'Stories for growing minds 🎧',
+          };
+          return m[this.ageGroup] || 'Books for every age';
+        },
+        heroSub() {
+          const m = {
+            '0-3': 'Gentle, colorful books for babies and toddlers — perfect for bedtime and first words.',
+            '3-5': 'Picture books and playful tales that spark imagination and curiosity.',
+            '5-8': 'Chapter books and adventures for newly independent readers.',
+            '8-12': 'Middle-grade novels, mysteries and non-fiction for curious minds.',
+            'teen': 'Young adult fiction and non-fiction for teenagers.',
+          };
+          return m[this.ageGroup] || '';
+        },
+
+        async init() {
+          this.loading = true;
+          this.loadError = false;
+          // URL -> state
+          this.applyUrlToState();
+          window.addEventListener('popstate', () => this.applyUrlToState());
+          this.$watch('ageGroup', () => { this.visibleCount = this.pageSize; this.selectedCategories = []; this.updateUrl(); });
+          this.$watch('selectedCategories', () => { this.visibleCount = this.pageSize; this.updateUrl(); });
+          this.$watch('typeFilter', () => { this.visibleCount = this.pageSize; this.updateUrl(); });
+          this.$watch('searchQuery', () => { this.visibleCount = this.pageSize; this.updateUrl(); });
+          this.$watch('sortBy', () => { this.visibleCount = this.pageSize; this.updateUrl(); });
+
+          try {
+            const res = await fetch('data/books.json', { cache: 'no-cache' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const data = await res.json();
+            if (!Array.isArray(data)) throw new Error('Invalid shape');
+            this.allBooks = data;
+          } catch (err) {
+            console.error(err);
+            this.loadError = true;
+          } finally {
+            this.loading = false;
+          }
+        },
+
+        applyUrlToState() {
+          const p = new URLSearchParams(window.location.search);
+          if (p.has('age')) this.ageGroup = p.get('age');
+          if (p.has('q')) this.searchQuery = p.get('q');
+          if (p.has('type')) this.typeFilter = p.get('type');
+          if (p.has('sort')) this.sortBy = p.get('sort');
+          if (p.has('category')) this.selectedCategories = p.get('category').split(',').filter(Boolean);
+        },
+        updateUrl() {
+          const p = new URLSearchParams();
+          if (this.ageGroup && this.ageGroup !== '0-3') p.set('age', this.ageGroup);
+          if (this.ageGroup === '0-3') {
+            // still include age for shareability? keep if not default? We'll include always for clarity
+          }
+          p.set('age', this.ageGroup);
+          if (this.searchQuery) p.set('q', this.searchQuery);
+          if (this.typeFilter && this.typeFilter !== 'all') p.set('type', this.typeFilter);
+          if (this.sortBy && this.sortBy !== 'curated') p.set('sort', this.sortBy);
+          if (this.selectedCategories.length) p.set('category', this.selectedCategories.join(','));
+          const qs = p.toString();
+          const newUrl = window.location.pathname + (qs ? '?' + qs : '');
+          window.history.replaceState({}, '', newUrl);
+        },
+
+        setAge(ag) { this.ageGroup = ag; },
+
+        get ageBooks() {
+          return this.allBooks.filter(b => b.age_group === this.ageGroup);
+        },
+        get allCategories() {
+          const set = new Set();
+          this.ageBooks.forEach(b => (b.genres_tags || []).forEach(g => set.add(g)));
+          return Array.from(set).sort();
+        },
+        get visibleCategories() {
+          return this.allCategories;
+        },
+
+        toggleCategory(cat) {
+          if (cat === '') { this.selectedCategories = []; return; }
+          const i = this.selectedCategories.indexOf(cat);
+          if (i >= 0) this.selectedCategories.splice(i, 1);
+          else this.selectedCategories.push(cat);
+          this.visibleCount = this.pageSize;
+        },
+        clearCategories() { this.selectedCategories = []; this.visibleCount = this.pageSize; },
+        resetFilters() { this.searchQuery = ''; this.selectedCategories = []; this.typeFilter = 'all'; this.sortBy = 'curated'; this.visibleCount = this.pageSize; },
+
+        get filteredBooks() {
+          let result = this.ageBooks.filter(book => {
+            const b = book || {};
+            let matchesCat = true;
+            if (this.selectedCategories.length > 0) {
+              const tags = b.genres_tags || [];
+              matchesCat = this.selectedCategories.some(g => tags.includes(g));
+            }
+            let matchesType = true;
+            if (this.typeFilter === 'fiction') matchesType = b.fiction === true;
+            else if (this.typeFilter === 'nonfiction') matchesType = b.fiction === false;
+            const q = (this.searchQuery || '').toLowerCase();
+            const title = String(b.title || '').toLowerCase();
+            const author = String(b.author || '').toLowerCase();
+            const matchesQuery = !q || title.includes(q) || author.includes(q) || (b.genres_tags || []).some(g => String(g).toLowerCase().includes(q));
+            return matchesCat && matchesType && matchesQuery;
+          });
+          if (this.sortBy === 'rating_desc') {
+            result.sort((a,b) => (b.goodreads?.rating||0) - (a.goodreads?.rating||0));
+          } else if (this.sortBy === 'ratings_count_desc') {
+            result.sort((a,b) => (b.goodreads?.ratings_count||0) - (a.goodreads?.ratings_count||0));
+          } else if (this.sortBy === 'title_asc') {
+            result.sort((a,b) => String(a.title||'').localeCompare(String(b.title||'')));
+          }
+          return result;
+        },
+        get displayedBooks() { return this.filteredBooks.slice(0, this.visibleCount); },
+        get hasMore() { return this.visibleCount < this.filteredBooks.length; },
+        loadMore() { this.visibleCount += this.pageSize; },
+
+        slugify(text) {
+          const s = String(text || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+          return s.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'book';
+        },
+        bookSlug(book) {
+          const stored = book && book.slug ? String(book.slug).trim() : '';
+          if (stored) return stored;
+          return this.slugify(book && book.title);
+        },
+        bookPageUrl(book) { return 'books/' + this.bookSlug(book) + '.html'; },
+
+        isValidIsbn13(isbn) {
+          const s = String(isbn || '').replace(/[-\s]/g, '');
+          if (!/^\d{13}$/.test(s)) return false;
+          let sum = 0;
+          for (let i = 0; i < 12; i++) sum += Number(s[i]) * (i % 2 === 0 ? 1 : 3);
+          return (10 - (sum % 10)) % 10 === Number(s[12]);
+        },
+        goodreadsUrl(book) {
+          const title = book && book.title ? String(book.title).trim() : '';
+          const author = book && book.author ? String(book.author).trim() : '';
+          const isbn = String(book && book.isbn_13 || '').replace(/[-\s]/g,'');
+          const q = this.isValidIsbn13(isbn) ? isbn : (title + ' ' + author).trim() || isbn;
+          return 'https://www.goodreads.com/search?q=' + encodeURIComponent(q);
+        },
+
+        coverUrl(book) {
+          if (!book || !book.cover_image_url) return this.fallbackCoverSrc(book);
+          const url = book.cover_image_url;
+          if (url.includes('covers.openlibrary.org') && !url.includes('default=')) {
+            return url + (url.includes('?') ? '&' : '?') + 'default=false';
+          }
+          return url;
+        },
+        titleCoverUrl(book) {
+          const title = book && book.title ? String(book.title).trim() : '';
+          if (!title) return null;
+          return 'https://covers.openlibrary.org/b/title/' + encodeURIComponent(title) + '-L.jpg?default=false';
+        },
+        resetCoverState(el, book) {
+          const isbn = book && book.isbn_13 ? String(book.isbn_13) : '';
+          if (el.dataset.isbn !== isbn) { el.dataset.isbn = isbn; delete el.dataset.triedTitle; delete el.dataset.triedId; delete el.dataset.fallbackApplied; }
+        },
+        tryNextCover(el, book) {
+          if (!el.dataset.triedTitle) {
+            el.dataset.triedTitle = '1';
+            const t = this.titleCoverUrl(book);
+            if (t && el.src !== t) return t;
+          }
+          const isbn = book && book.isbn_13 ? String(book.isbn_13) : '';
+          const pinned = (book && book.cover_ol_id);
+          if (pinned && !el.dataset.triedId) {
+            el.dataset.triedId = '1';
+            return 'https://covers.openlibrary.org/b/id/' + pinned + '-L.jpg?default=false';
+          }
+          return null;
+        },
+        handleCoverError(event, book) {
+          const el = event && event.target ? event.target : null;
+          if (!el) return;
+          this.resetCoverState(el, book);
+          if (el.dataset.fallbackApplied) return;
+          const next = this.tryNextCover(el, book);
+          if (next) { el.src = next; return; }
+          el.dataset.fallbackApplied = '1';
+          el.src = this.fallbackCoverSrc(book);
+        },
+        checkCover(event, book) {
+          const el = event && event.target ? event.target : null;
+          if (!el) return;
+          this.resetCoverState(el, book);
+          if (el.dataset.fallbackApplied) return;
+          if (el.naturalWidth <= 2 && el.naturalHeight <= 2) {
+            const next = this.tryNextCover(el, book);
+            if (next) { el.src = next; return; }
+            el.dataset.fallbackApplied = '1';
+            el.src = this.fallbackCoverSrc(book);
+          }
+        },
+        fallbackCoverSrc(book) {
+          const raw = (book && book.title ? String(book.title) : 'No Cover').trim() || 'No Cover';
+          const esc = (s) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+          const words = raw.split(/\s+/);
+          const lines = [];
+          let line = '';
+          for (let i = 0; i < words.length; i++) {
+            const w = words[i];
+            const next = line ? line + ' ' + w : w;
+            if (next.length > 22 && line) {
+              lines.push(line);
+              if (lines.length === 2) { line = words.slice(i).join(' ').slice(0,30); break; }
+              line = w;
+            } else { line = next; }
+          }
+          if (line) lines.push(line.slice(0,30));
+          const titleLines = lines.slice(0,3);
+          const startY = titleLines.length > 1 ? 392 : 400;
+          const titleSvg = titleLines.map((t,i) => `<text x="200" y="${startY + i*30}" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="bold" fill="#451a03">${esc(t)}</text>`).join('');
+          const author = book && book.author ? String(book.author).slice(0,34) : '';
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600">` +
+            `<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fdf2f8"/><stop offset="1" stop-color="#fbcfe8"/></linearGradient></defs>` +
+            `<rect width="400" height="600" fill="url(#g)"/>` +
+            `<rect x="14" y="14" width="372" height="572" rx="18" fill="none" stroke="#ec4899" stroke-opacity="0.35" stroke-width="2"/>` +
+            `<text x="200" y="330" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" letter-spacing="3" fill="#9d174d">NO COVER</text>` +
+            titleSvg +
+            (author ? `<text x="200" y="${startY + titleLines.length*30 + 6}" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-style="italic" fill="#831843">${esc(author)}</text>` : '') +
+            `<text x="200" y="548" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-style="italic" fill="#ec4899">Golden Shelf Kids</text>` +
+            `</svg>`;
+          return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+        },
+      }
+    }
+  </script>
+</body>
+</html>
