@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "books": {
+    "9780395746561": {
+      "title": "Sector 7",
+      "libraries": {
+        "frisco": {
+          "checked_at": "2026-10-30T11:37:05Z",
+          "source": "BiblioCommons catalog",
+          "items": [
+            {
+              "format": "Picture book",
+              "status": "available",
+              "available_copies": 2,
+              "total_copies": 2,
+              "holds": 0,
+              "action": "borrow",
+              "url": "https://friscolibrary.bibliocommons.com/v2/record/S159C52475",
+              "is_digital": false
+            }
+          ]
+        },
+        "the-colony": {
+          "checked_at": "2026-10-25T19:00:00Z",
+          "source": "Library Extension snapshot",
+          "items": [
+            {
+              "format": "eBook",
+              "status": "unknown",
+              "action": "view",
+              "url": "https://ebook.yourcloudlibrary.com/library/thecolonyplereadtx",
+              "is_digital": true
+            }
+          ]
+        },
+        "little-elm": {
+          "checked_at": "2026-10-25T19:00:00Z",
+          "source": "Library Extension snapshot",
+          "items": [
+            {
+              "format": "Book",
+              "status": "unavailable",
+              "available_copies": 0,
+              "total_copies": 1,
+              "holds": 0,
+              "action": "hold",
+              "url": "https://littleelm.bywatersolutions.com/cgi-bin/koha/opac-search.pl?q=9780395746561",
+              "is_digital": false
+            },
+            {
+              "format": "eBook",
+              "status": "unknown",
+              "action": "view",
+              "url": "https://ebook.yourcloudlibrary.com/library/littleelmpl",
+              "is_digital": true
+            }
+          ]
+        },
+        "plano": {
+          "checked_at": "2026-10-30T11:37:08Z",
+          "source": "SirsiDynix Enterprise catalog",
+          "items": [
+            {
+              "format": "Book",
+              "status": "available",
+              "available_copies": 2,
+              "total_copies": 2,
+              "holds": 0,
+              "action": "borrow",
+              "url": "https://plano.ent.sirsi.net/client/en_US/default/search/detailnonmodal/ent:$002f$002fSD_ILS$002f0$002fSD_ILS:48141/one",
+              "is_digital": false
+            }
+          ]
+        },
+        "harris-county": {
+          "checked_at": "2026-10-30T11:37:09Z",
+          "source": "BiblioCommons catalog",
+          "items": [
+            {
+              "format": "Picture book",
+              "status": "available",
+              "available_copies": 7,
+              "total_copies": 7,
+              "holds": 0,
+              "action": "borrow",
+              "url": "https://hcpl.bibliocommons.com/v2/record/S203C91595",
+              "is_digital": false
+            }
+          ]
+        },
+        "houston": {
+          "checked_at": "2026-10-25T19:00:00Z",
+          "source": "Library Extension snapshot",
+          "items": [
+            {
+              "format": "eBook",
+              "status": "available",
+              "available_copies": 1,
+              "total_copies": 1,
+              "holds": 0,
+              "action": "borrow",
+              "url": "https://libbyapp.com/library/houstonlibrary/search/query-9780395746561/page-1",
+              "is_digital": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "updated": "2026-10-30T11:37:09Z"
+}
