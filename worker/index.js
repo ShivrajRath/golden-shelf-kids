@@ -130,10 +130,17 @@ function bibliocommonsItem(lib, cand) {
 async function fetchBibliocommons(lib, book) {
   const isbn = normalizeIsbn(book.isbn_13);
   const title = cleanText(book.title).toLowerCase();
-  const url = fillQuery(lib.search_url, book);
-  const page = await httpGet(url);
-  const state = extractBiblioCommonsState(page);
-  const candidates = biblioCandidates(state);
+  let url = fillQuery(lib.search_url, book);
+  let page = await httpGet(url);
+  let state = extractBiblioCommonsState(page);
+  let candidates = biblioCandidates(state);
+  if (!candidates.length && isValidIsbn13(isbn)) {
+    const titleBook = { isbn_13: "", title: book.title, author: book.author };
+    url = fillQuery(lib.search_url, titleBook);
+    page = await httpGet(url);
+    state = extractBiblioCommonsState(page);
+    candidates = biblioCandidates(state);
+  }
   if (!candidates.length) throw new Error("no results parsed");
   let matching = candidates.filter((c) => {
     const isbns = (c.info.isbns || []).map(normalizeIsbn);
@@ -168,9 +175,11 @@ async function fetchBibliocommons(lib, book) {
 }
 
 // ---------- SirsiDynix ----------
-function sirsiDocId(page, isbn) {
+function sirsiDocId(page, isbn, title = "") {
   const chunks = page.split(/<div id="results_cell\d+"/);
   let fallback = null;
+  let titleCandidate = null;
+  const titleLower = String(title || "").toLowerCase();
   for (const chunk of chunks.slice(1)) {
     const m = chunk.match(/value="([^"]+)"[^>]*id="da\d+"/);
     if (!m) continue;
@@ -180,6 +189,13 @@ function sirsiDocId(page, isbn) {
       const parsed = parseSirsiDocValue(value);
       if (parsed) return parsed;
     }
+    if (!titleCandidate && titleLower && chunk.toLowerCase().includes(titleLower)) {
+      titleCandidate = value;
+    }
+  }
+  if (titleCandidate) {
+    const parsed = parseSirsiDocValue(titleCandidate);
+    if (parsed) return parsed;
   }
   if (fallback) return parseSirsiDocValue(fallback);
   return null;
@@ -219,9 +235,16 @@ function sirsiAvailabilityPayload(page) {
 }
 async function fetchSirsi(lib, book) {
   const isbn = normalizeIsbn(book.isbn_13);
-  const searchUrl = fillQuery(lib.search_url, book);
-  const searchPage = await httpGet(searchUrl);
-  const doc = sirsiDocId(searchPage, isbn);
+  const title = cleanText(book.title);
+  let searchUrl = fillQuery(lib.search_url, book);
+  let searchPage = await httpGet(searchUrl);
+  let doc = sirsiDocId(searchPage, isbn, title);
+  if (!doc && isValidIsbn13(isbn)) {
+    const titleBook = { isbn_13: "", title: book.title, author: book.author };
+    searchUrl = fillQuery(lib.search_url, titleBook);
+    searchPage = await httpGet(searchUrl);
+    doc = sirsiDocId(searchPage, "", title);
+  }
   if (!doc) throw new Error("no catalog record found");
   const { detail: detailUrl, availability: availabilityUrl } = sirsiUrls(lib, doc.source, doc.docId);
   const detailPage = await httpGet(detailUrl);

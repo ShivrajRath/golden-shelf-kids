@@ -213,6 +213,12 @@ def fetch_bibliocommons(lib, book, timeout=30):
     page = http_get(url, timeout=timeout)
     state = extract_bibliocommons_state(page)
     candidates = bibliocommons_candidates(state)
+    if not candidates and isbn and is_valid_isbn13(isbn):
+        title_book = {"isbn_13": "", "title": book.get("title"), "author": book.get("author")}
+        url = fill_query(lib.get("search_url"), title_book)
+        page = http_get(url, timeout=timeout)
+        state = extract_bibliocommons_state(page)
+        candidates = bibliocommons_candidates(state)
     if not candidates:
         return None, "no results parsed"
 
@@ -266,10 +272,12 @@ def fetch_bibliocommons(lib, book, timeout=30):
 # SirsiDynix Enterprise (Plano, Houston)
 # ---------------------------------------------------------------------------
 
-def sirsi_doc_id(page, isbn):
+def sirsi_doc_id(page, isbn, title=""):
     """Return (source, numeric id) for the first matching result."""
     chunks = re.split(r'<div id="results_cell\d+"', page)
     fallback = None
+    title_candidate = None
+    title_lower = (title or "").lower()
     for chunk in chunks[1:]:
         match = re.search(r'value="([^"]+)"[^>]*id="da\d+"', chunk)
         if not match:
@@ -279,6 +287,12 @@ def sirsi_doc_id(page, isbn):
             fallback = value
         if isbn and isbn in normalize_isbn(chunk):
             return parse_sirsi_doc_value(value)
+        if title_candidate is None and title_lower and title_lower in chunk.lower():
+            title_candidate = value
+    if title_candidate:
+        parsed = parse_sirsi_doc_value(title_candidate)
+        if parsed:
+            return parsed
     if fallback:
         return parse_sirsi_doc_value(fallback)
     return None
@@ -334,9 +348,15 @@ def sirsi_availability_payload(page):
 
 def fetch_sirsi(lib, book, timeout=30):
     isbn = normalize_isbn(book.get("isbn_13"))
+    title = clean_text(book.get("title"))
     search_url = fill_query(lib.get("search_url"), book)
     search_page = http_get(search_url, timeout=timeout)
-    doc = sirsi_doc_id(search_page, isbn)
+    doc = sirsi_doc_id(search_page, isbn, title)
+    if not doc and isbn and is_valid_isbn13(isbn):
+        title_book = {"isbn_13": "", "title": book.get("title"), "author": book.get("author")}
+        search_url = fill_query(lib.get("search_url"), title_book)
+        search_page = http_get(search_url, timeout=timeout)
+        doc = sirsi_doc_id(search_page, "", title)
     if not doc:
         return None, "no catalog record found"
 
