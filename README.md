@@ -1,6 +1,6 @@
 # Golden Shelf Kids
 
-**A free, curated online library of 7,500+ age-appropriate books for children and teens.**
+**A free, curated online library of 8,750+ age-appropriate books for children and teens.**
 
 Browse by age, search by title, author, or topic, filter by fiction/non-fiction, and explore categories — then jump to a book's own page for a summary, rating, and one-click links to your local library.
 
@@ -10,7 +10,7 @@ Browse by age, search by title, author, or topic, filter by fiction/non-fiction,
 
 ## What's inside
 
-- **7,500 curated titles** across five age bands: **Ages 0–3**, **3–5**, **5–8**, **8–12**, and **Teens**.
+- **8,750 curated titles** across five age bands: **Ages 0–3**, **3–5**, **5–8**, **8–12**, and **Teens**.
 - Every book is rated **4.0+ on Goodreads** with **500+ ratings**, so you're starting from books families already love.
 - Fiction and non-fiction, tagged with categories like Animals, Fantasy & Magic, Science, History, Mystery, Poetry, and more.
 - A dedicated page for every book with a cover, summary, key takeaways, publication year, page count, and Goodreads link.

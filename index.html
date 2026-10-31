@@ -88,6 +88,7 @@
       </div>
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-stone-600 flex-shrink-0" aria-label="Primary">
         <a href="#collection" class="hover:underline" :class="theme.accentText">Collection</a>
+        <a href="https://novicelab.org/golden-shelf/" class="hover:underline" :class="theme.accentText">Adult shelf</a>
       </nav>
       <div class="flex items-center space-x-2 flex-shrink-0">
         <span class="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border" :class="theme.chip">
@@ -105,6 +106,12 @@
       <h2 class="text-3xl sm:text-5xl font-display font-bold tracking-tight" :class="theme.accentText" x-text="heroTitle()"></h2>
       <p class="text-stone-600 leading-relaxed max-w-2xl mx-auto" x-text="heroSub()"></p>
     </section>
+
+    <!-- Cross-site suggestion -->
+    <aside class="max-w-2xl mx-auto rounded-2xl border border-amber-200/60 bg-amber-50/60 px-4 py-3 text-sm text-stone-700 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2" aria-label="Other ages">
+      <span>Looking for adult non-fiction?</span>
+      <a href="https://novicelab.org/golden-shelf/" class="font-semibold text-amber-700 hover:text-amber-800 hover:underline whitespace-nowrap">Explore Golden Shelf →</a>
+    </aside>
 
     <!-- Age selector -->
     <section aria-label="Choose age group" class="flex flex-wrap justify-center gap-2 sm:gap-3">
@@ -220,7 +227,8 @@
   </main>
 
   <footer class="bg-white border-t mt-12 py-8" :class="theme.border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
+      <p class="text-xs text-stone-500">Looking for adult non-fiction? <a href="https://novicelab.org/golden-shelf/" class="text-amber-700 hover:text-amber-800 hover:underline font-medium">Visit Golden Shelf</a>.</p>
       <p class="text-xs text-stone-500">Golden Shelf Kids • Shivraj Rath</p>
     </div>
   </footer>
