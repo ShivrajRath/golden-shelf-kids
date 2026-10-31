@@ -309,8 +309,10 @@
       .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
       .then(applyData)
       .catch(function(err){
-        if (note) note.textContent = 'Live status unavailable here. Open a catalog to check.';
-        if (footer) footer.textContent = 'For live status, run "python3 serve.py" and open this page at http://127.0.0.1:8000/books/' + (window.location.pathname.split('/').pop() || '') + ' . Use the Check buttons otherwise.';
+        try { console.error('GSK live fetch failed:', err); } catch (e) {}
+        var msg = (err && err.message) ? err.message : String(err);
+        if (note) note.textContent = 'Live status unavailable (' + msg + ').';
+        if (footer) footer.textContent = 'Could not reach the live API. Check your network/ad-blocker. API: ' + url;
       });
   })();
   </script>
