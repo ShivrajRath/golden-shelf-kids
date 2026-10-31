@@ -99,8 +99,34 @@ def fetch_one(lib, book, timeout):
         entry["blocked"] = False
         entry.setdefault("source", "Live catalog")
         return lib.get("id"), entry, None
-    # Fall back to a "check" row so the page still offers a working link.
     url = library_search_url(lib, book.get("isbn_13"), book.get("title"), book.get("author"))
+    not_found = bool(error) and any(
+        token in str(error).lower()
+        for token in ("no results", "no catalog record", "did not match", "no matching")
+    )
+    if not_found:
+        # Successfully checked — the book simply isn't in this catalog.
+        entry = {
+            "checked_at": now_iso(),
+            "source": f"{lib.get('system') or 'Library'} catalog",
+            "live": True,
+            "blocked": False,
+            "error": None,
+            "items": [
+                {
+                    "format": "Book / eBook",
+                    "status": "unknown",
+                    "available_copies": None,
+                    "total_copies": None,
+                    "holds": 0,
+                    "action": "search",
+                    "url": url,
+                    "is_digital": False,
+                }
+            ],
+        }
+        return lib.get("id"), entry, None
+    # Real failure (network, parse, challenge) — keep a working Check link.
     fallback = {
         "checked_at": None,
         "source": f"Live check failed: {error}",

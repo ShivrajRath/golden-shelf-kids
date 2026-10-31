@@ -295,7 +295,23 @@ export default {
         } catch (e) {
           entry = fallbackEntry(lib, book, String(e && e.message ? e.message : e));
         }
-        if (entry && entry.error) {
+        const notFound = entry && entry.error && /no results|no catalog record|did not match|no matching/i.test(String(entry.error));
+        if (notFound) {
+          entry = {
+            checked_at: new Date().toISOString(),
+            source: `${lib.system} catalog`,
+            live: true,
+            blocked: false,
+            error: null,
+            items: [{
+              format: "Book / eBook", status: "unknown",
+              available_copies: null, total_copies: null, holds: 0,
+              action: "search",
+              url: fillQuery(lib.search_url || lib.catalog_url || "", book),
+              is_digital: false,
+            }],
+          };
+        } else if (entry && entry.error) {
           entry = fallbackEntry(lib, book, entry.error);
         }
         return {
