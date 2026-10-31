@@ -185,7 +185,7 @@
             <article class="bg-white rounded-2xl border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group" :class="theme.border">
               <a :href="bookPageUrl(book)" class="flex flex-col flex-grow">
                 <div class="aspect-[3/4] overflow-hidden bg-stone-100">
-                  <img :src="coverUrl(book)" :alt="'Cover of ' + (book.title || 'book')" loading="lazy"
+                  <img :src="coverUrl(book)" :alt="'Cover of ' + (book.title || 'book')" loading="lazy" decoding="async" fetchpriority="low"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     @error="handleCoverError($event, book)" @load="checkCover($event, book)">
                 </div>
@@ -424,7 +424,8 @@
 
         coverUrl(book) {
           if (!book || !book.cover_image_url) return this.fallbackCoverSrc(book);
-          const url = book.cover_image_url;
+          let url = book.cover_image_url;
+          url = url.replace(/-[SML]\.jpg/i, '-M.jpg');
           if (url.includes('covers.openlibrary.org') && !url.includes('default=')) {
             return url + (url.includes('?') ? '&' : '?') + 'default=false';
           }
@@ -433,7 +434,7 @@
         titleCoverUrl(book) {
           const title = book && book.title ? String(book.title).trim() : '';
           if (!title) return null;
-          return 'https://covers.openlibrary.org/b/title/' + encodeURIComponent(title) + '-L.jpg?default=false';
+          return 'https://covers.openlibrary.org/b/title/' + encodeURIComponent(title) + '-M.jpg?default=false';
         },
         resetCoverState(el, book) {
           const isbn = book && book.isbn_13 ? String(book.isbn_13) : '';
@@ -449,7 +450,7 @@
           const pinned = (book && book.cover_ol_id);
           if (pinned && !el.dataset.triedId) {
             el.dataset.triedId = '1';
-            return 'https://covers.openlibrary.org/b/id/' + pinned + '-L.jpg?default=false';
+            return 'https://covers.openlibrary.org/b/id/' + pinned + '-M.jpg?default=false';
           }
           return null;
         },
